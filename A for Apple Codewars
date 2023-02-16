@@ -1,0 +1,36 @@
+function a(n){
+  //solution for A for Apple Codewars 6 kyu.
+  let a ="";
+  //if the argument not even number decrease the value by 1
+  if ( n%2 != 0){
+    n--;
+  }
+  //if the value is less than 4, consider empty/invalid
+  if ( n < 4){
+    return "";
+  }
+  //1st looping until the 'n' value, this part responsible for the height of the pattern
+  for (let i = 1 ; i <= n ; i++){
+  //2nd looping until 2*n-1 value, this part responsible in printing the char that produce the graph
+    for (let j = 1; j<=2*n-1;j++){
+    //1st or condition: to  create left side of 'A'
+    //2nd or condition: to create right side of 'A'
+    //3rd or condition (combination of multiple 'and' condition: To create the connecting part in the middle of 'A'. 
+    //it will check the i if it's the right height to print the connecting, and to print the connecting char with 1 spaces between the char. 
+    //Lastly it make sure the connecting part isn't exceeding the right side of 'A'
+      if (j == n-i+1 || j == n+i-1|| i == n/2 +1 && (j-i) %2 == 1 && j< n+i-1){
+          a += "A";
+      }
+      //printing the spaces 
+      else {
+        a +=" ";
+      }
+        }
+    //print '\n' if the i hasn't reach the height limit yet.
+    if (i !=n){
+       a +="\n"
+    }
+  }
+  //return the string output
+  return a;
+}
